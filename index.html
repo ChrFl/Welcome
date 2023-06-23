@@ -1,7 +1,73 @@
-﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
+<<<<<<< HEAD
+    <title>Willkommen</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Courier New, Courier, monospace;
+            text-align: center;
+            padding-top: 200px;
+            font-size: 48px;
+        }
+
+        .blinking {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var container = document.getElementById('text-container');
+            var text = "welcome";
+            var delay = 200; // Zeitverzögerung in Millisekunden zwischen dem Erscheinen der Buchstaben
+            var cursorBlinkDelay = 500; // Zeitverzögerung in Millisekunden für den Blink-Effekt des Cursors
+            var cursor = document.getElementById('cursor');
+            var cursorBlinkCount = 5; // Anzahl der Blink-Effekte des Cursors
+
+            setTimeout(function () {
+                blinkCursor(cursor, cursorBlinkCount);
+            }, cursorBlinkDelay);
+
+            function blinkCursor(cursor, blinkCount) {
+                var blinkInterval = setInterval(function () {
+                    cursor.style.visibility = (cursor.style.visibility === 'visible') ? 'hidden' : 'visible';
+                    blinkCount--;
+
+                    if (blinkCount === 0) {
+                        clearInterval(blinkInterval);
+                        cursor.style.visibility = 'hidden';
+                        typeText(container, text, delay);
+                    }
+                }, cursorBlinkDelay);
+            }
+
+            function typeText(container, text, delay) {
+                var index = 0;
+                var typeInterval = setInterval(function () {
+                    container.innerHTML = text.substring(0, index) + "|";
+                    index++;
+
+                    if (index > text.length) {
+                        clearInterval(typeInterval);
+                        container.innerHTML = text;
+                    }
+                }, delay);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="text-container"></div>
+    <span id="cursor">|</span>
+=======
     <meta charset="utf-8" />
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
@@ -12,5 +78,6 @@
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
         sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+>>>>>>> 8a7380611bb0083e06926bd9291fd1957a69aba2
 </body>
 </html>
